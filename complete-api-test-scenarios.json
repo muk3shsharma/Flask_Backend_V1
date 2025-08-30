@@ -1240,8 +1240,15 @@
   "variable": [
     {
       "key": "base_url",
+      "value": "https://your-app-name.onrender.com",
+      "type": "string",
+      "description": "Production URL - Update this after Render deployment"
+    },
+    {
+      "key": "base_url_local",
       "value": "http://localhost:5000",
-      "type": "string"
+      "type": "string",
+      "description": "Local development URL"
     },
     {
       "key": "generate_endpoint",
@@ -1256,6 +1263,16 @@
     {
       "key": "files_endpoint",
       "value": "/api/files",
+      "type": "string"
+    },
+    {
+      "key": "health_endpoint",
+      "value": "/api/health",
+      "type": "string"
+    },
+    {
+      "key": "templates_endpoint",
+      "value": "/api/templates", 
       "type": "string"
     },
     {
