@@ -27,6 +27,19 @@ class Config:
     TEMPLATE_FOLDER = os.path.join(BASE_DIR, os.environ.get('TEMPLATES_FOLDER', 'word_templates'))
     UPLOAD_FOLDER = os.path.join(BASE_DIR, os.environ.get('UPLOAD_FOLDER', 'uploads'))
     
+    # API Key Authentication
+    API_KEYS_FILE = os.path.join(BASE_DIR, 'api_keys.json')
+    REQUIRE_API_KEY = os.environ.get('REQUIRE_API_KEY', 'True').lower() == 'true'
+    
+    # API Keys from Environment Variables (fallback if JSON file not found)
+    API_KEYS_ENV = [
+        os.environ.get('API_KEY_1'),
+        os.environ.get('API_KEY_2'), 
+        os.environ.get('API_KEY_3'),
+        os.environ.get('API_KEY_4')
+    ]
+    API_KEYS_ENV = [key for key in API_KEYS_ENV if key]  # Filter out None values
+    
     # API Endpoints
     HEALTH_ENDPOINT = os.environ.get('HEALTH_ENDPOINT', '/api/health')
     TEMPLATES_ENDPOINT = os.environ.get('TEMPLATES_ENDPOINT', '/api/templates')

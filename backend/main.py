@@ -22,6 +22,8 @@ from docx.shared import Cm
 from werkzeug.utils import secure_filename
 import uuid
 import logging
+import json
+from functools import wraps
 from pathlib import Path
 
 # Import processing modules
@@ -46,6 +48,61 @@ logging.basicConfig(
     format=Config.LOG_FORMAT
 )
 logger = logging.getLogger(__name__)
+
+# API Key Authentication
+def load_api_keys():
+    """Load API keys from JSON file or environment variables."""
+    # Try to load from JSON file first
+    try:
+        with open(Config.API_KEYS_FILE, 'r') as f:
+            data = json.load(f)
+            json_keys = data.get('valid_keys', [])
+            if json_keys:
+                logger.info(f"Loaded {len(json_keys)} API keys from JSON file")
+                return json_keys
+    except FileNotFoundError:
+        logger.info("API keys JSON file not found, trying environment variables")
+    except Exception as e:
+        logger.warning(f"Error loading API keys from JSON: {str(e)}")
+    
+    # Fallback to environment variables
+    env_keys = Config.API_KEYS_ENV
+    if env_keys:
+        logger.info(f"Loaded {len(env_keys)} API keys from environment variables")
+        return env_keys
+    
+    # No keys found
+    logger.warning("No API keys found in JSON file or environment variables")
+    return []
+
+def require_api_key(f):
+    """Decorator to require API key authentication."""
+    @wraps(f)
+    def decorated_function(*args, **kwargs):
+        # Skip API key check if disabled in config
+        if not Config.REQUIRE_API_KEY:
+            return f(*args, **kwargs)
+            
+        # Check for API key in header
+        api_key = request.headers.get('x-api-key')
+        if not api_key:
+            return jsonify({
+                'error': 'Missing API key',
+                'message': 'Please provide x-api-key in request headers'
+            }), 401
+            
+        # Load and validate API key
+        valid_keys = load_api_keys()
+        if api_key not in valid_keys:
+            return jsonify({
+                'error': 'Invalid API key',
+                'message': 'The provided API key is not valid'
+            }), 401
+            
+        # Log successful authentication
+        logger.info(f"API request authenticated with key ending in: ...{api_key[-4:]}")
+        return f(*args, **kwargs)
+    return decorated_function
 
 @app.route('/')
 def index():
@@ -132,6 +189,7 @@ def get_templates():
         }), 500
 
 @app.route('/api/generate', methods=['POST'])
+@require_api_key
 def generate_report():
     """Generate training report from form data and uploaded files."""
     try:
@@ -257,6 +315,7 @@ def generate_report():
 
 
 @app.route('/api/download/<file_id>', methods=['GET'])
+@require_api_key
 def download_report(file_id):
     """Download generated report by file ID."""
     try:
@@ -345,6 +404,7 @@ def download_report(file_id):
 
 
 @app.route('/api/files', methods=['GET'])
+@require_api_key
 def list_generated_files():
     """List all generated files in output directory."""
     try:

@@ -35,15 +35,25 @@ venv.bak/
 .env.test.local
 .env.production.local
 
+# API Keys and Secrets
+api_keys.json
+secrets/
+
 # Flask
 instance/
 .webassets-cache
 
-# Output Files
-output/
-*.docx
-*.doc
-*.pdf
+# Output Files (generated reports - exclude these)
+output/*.docx
+output/*.doc
+output/*.pdf
+uploads/*.docx
+uploads/*.doc
+uploads/*.pdf
+
+# But keep the output directory structure
+!output/.gitkeep
+!uploads/.gitkeep
 
 # Logs
 logs/

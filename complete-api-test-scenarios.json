@@ -1,7 +1,7 @@
 {
   "info": {
     "name": "Training Report Generator - Complete Test Scenarios",
-    "description": "Comprehensive API test scenarios with ALL placeholders and ALL image types",
+    "description": "Comprehensive API test scenarios with API Key Authentication. ALL placeholders and ALL image types included.\n\n🔐 **API AUTHENTICATION REQUIRED**\n\nValid API Keys for testing:\n- TRG_KEY_9f4e2cd6ba8a7c3d4e1f2b5a8c9d0e3f4a5b6c7d8e9f0a1b2c3d4e5f6789abcdef\n- TRG_KEY_7a8b9c0d1e2f3a4b5c6d7e8f9a0b1c2d3e4f5a6b7c8d9e0f1a2b3c4d5e6f789012\n- TRG_KEY_5d6e7f8a9b0c1d2e3f4a5b6c7d8e9f0a1b2c3d4e5f6a7b8c9d0e1f2a3b4c567890\n- TRG_KEY_3b4c5d6e7f8a9b0c1d2e3f4a5b6c7d8e9f0a1b2c3d4e5f6a7b8c9d0e1f2a345678\n\n📋 **How to use:**\n1. Import this collection into Postman\n2. Each scenario has an API key pre-configured in headers\n3. Protected endpoints: /api/generate, /api/download, /api/files\n4. Public endpoints: /, /api/health, /api/templates\n5. Test authentication with ❌ failure scenarios\n\n⚠️ All protected API calls require x-api-key header!",
     "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
   },
   "item": [
@@ -31,7 +31,14 @@
       ],
       "request": {
         "method": "POST",
-        "header": [],
+        "header": [
+          {
+            "key": "x-api-key",
+            "value": "TRG_KEY_9f4e2cd6ba8a7c3d4e1f2b5a8c9d0e3f4a5b6c7d8e9f0a1b2c3d4e5f6789abcdef",
+            "type": "text",
+            "description": "API Key for authentication"
+          }
+        ],
         "body": {
           "mode": "formdata",
           "formdata": [
@@ -391,7 +398,14 @@
       "name": "Scenario 2: Type B Template - All Fields + All Images",
       "request": {
         "method": "POST",
-        "header": [],
+        "header": [
+          {
+            "key": "x-api-key",
+            "value": "TRG_KEY_7a8b9c0d1e2f3a4b5c6d7e8f9a0b1c2d3e4f5a6b7c8d9e0f1a2b3c4d5e6f789012",
+            "type": "text",
+            "description": "API Key for authentication - Different key for testing"
+          }
+        ],
         "body": {
           "mode": "formdata",
           "formdata": [
@@ -631,7 +645,14 @@
       "name": "Scenario 3: Type C Template - All Fields + All Images",
       "request": {
         "method": "POST",
-        "header": [],
+        "header": [
+          {
+            "key": "x-api-key",
+            "value": "TRG_KEY_5d6e7f8a9b0c1d2e3f4a5b6c7d8e9f0a1b2c3d4e5f6a7b8c9d0e1f2a3b4c567890",
+            "type": "text",
+            "description": "API Key for authentication - Third key for testing"
+          }
+        ],
         "body": {
           "mode": "formdata",
           "formdata": [
@@ -845,7 +866,14 @@
       "name": "Scenario 4: Type D Template - All Fields + All Images",
       "request": {
         "method": "POST",
-        "header": [],
+        "header": [
+          {
+            "key": "x-api-key",
+            "value": "TRG_KEY_3b4c5d6e7f8a9b0c1d2e3f4a5b6c7d8e9f0a1b2c3d4e5f6a7b8c9d0e1f2a345678",
+            "type": "text",
+            "description": "API Key for authentication - Fourth key for testing"
+          }
+        ],
         "body": {
           "mode": "formdata",
           "formdata": [
@@ -1059,7 +1087,14 @@
       "name": "Download Any Generated File",
       "request": {
         "method": "GET",
-        "header": [],
+        "header": [
+          {
+            "key": "x-api-key",
+            "value": "TRG_KEY_9f4e2cd6ba8a7c3d4e1f2b5a8c9d0e3f4a5b6c7d8e9f0a1b2c3d4e5f6789abcdef",
+            "type": "text",
+            "description": "API Key for authentication - Required for file downloads"
+          }
+        ],
         "url": {
           "raw": "{{base_url}}{{download_endpoint}}/{{file_id}}",
           "host": ["{{base_url}}"],
@@ -1072,13 +1107,133 @@
       "name": "List All Generated Files",
       "request": {
         "method": "GET",
-        "header": [],
+        "header": [
+          {
+            "key": "x-api-key",
+            "value": "TRG_KEY_9f4e2cd6ba8a7c3d4e1f2b5a8c9d0e3f4a5b6c7d8e9f0a1b2c3d4e5f6789abcdef",
+            "type": "text",
+            "description": "API Key for authentication - Required for file listing"
+          }
+        ],
         "url": {
           "raw": "{{base_url}}{{files_endpoint}}",
           "host": ["{{base_url}}"],
           "path": ["{{files_endpoint}}"]
         },
         "description": "View all generated files from all scenarios with download links and metadata."
+      }
+    },
+    {
+      "name": "❌ Test: Missing API Key (Should Fail)",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "// Test that request fails without API key",
+              "pm.test('Request should fail with 401 Unauthorized', function () {",
+              "    pm.response.to.have.status(401);",
+              "});",
+              "",
+              "pm.test('Response should contain error message', function () {",
+              "    var jsonData = pm.response.json();",
+              "    pm.expect(jsonData).to.have.property('error');",
+              "    pm.expect(jsonData.error).to.include('Missing API key');",
+              "});",
+              "",
+              "console.log('✅ Authentication test passed - API key required!');"
+            ],
+            "type": "text/javascript"
+          }
+        }
+      ],
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/x-www-form-urlencoded",
+            "type": "text"
+          }
+        ],
+        "body": {
+          "mode": "formdata",
+          "formdata": [
+            {
+              "key": "training_type",
+              "value": "type_a",
+              "type": "text"
+            },
+            {
+              "key": "template_id",
+              "value": "1",
+              "type": "text"
+            }
+          ]
+        },
+        "url": {
+          "raw": "{{base_url}}{{generate_endpoint}}",
+          "host": ["{{base_url}}"],
+          "path": ["{{generate_endpoint}}"]
+        },
+        "description": "Test that API correctly rejects requests without API key - should return 401 error."
+      }
+    },
+    {
+      "name": "❌ Test: Invalid API Key (Should Fail)",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "// Test that request fails with invalid API key",
+              "pm.test('Request should fail with 401 Unauthorized', function () {",
+              "    pm.response.to.have.status(401);",
+              "});",
+              "",
+              "pm.test('Response should contain invalid key message', function () {",
+              "    var jsonData = pm.response.json();",
+              "    pm.expect(jsonData).to.have.property('error');",
+              "    pm.expect(jsonData.error).to.include('Invalid API key');",
+              "});",
+              "",
+              "console.log('✅ Invalid API key test passed - key validation works!');"
+            ],
+            "type": "text/javascript"
+          }
+        }
+      ],
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "x-api-key",
+            "value": "INVALID_KEY_12345",
+            "type": "text",
+            "description": "Invalid API key for testing"
+          }
+        ],
+        "body": {
+          "mode": "formdata",
+          "formdata": [
+            {
+              "key": "training_type",
+              "value": "type_a",
+              "type": "text"
+            },
+            {
+              "key": "template_id",
+              "value": "1",
+              "type": "text"
+            }
+          ]
+        },
+        "url": {
+          "raw": "{{base_url}}{{generate_endpoint}}",
+          "host": ["{{base_url}}"],
+          "path": ["{{generate_endpoint}}"]
+        },
+        "description": "Test that API correctly rejects requests with invalid API key - should return 401 error."
       }
     }
   ],
