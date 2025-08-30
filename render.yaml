@@ -4,7 +4,7 @@ services:
     env: python
     plan: free
     buildCommand: pip install -r requirements.txt
-    startCommand: cd backend && gunicorn main:app --bind 0.0.0.0:$PORT
+    startCommand: gunicorn backend.main:app --bind 0.0.0.0:$PORT
     healthCheckPath: /api/health
     envVars:
       - key: FLASK_ENV
@@ -14,7 +14,7 @@ services:
       - key: MAX_CONTENT_LENGTH
         value: "31457280"
       - key: PYTHONPATH
-        value: "./backend"
+        value: "."
       - key: DEBUG_MODE
         value: "False"
     disk:
