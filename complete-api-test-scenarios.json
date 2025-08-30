@@ -1240,9 +1240,9 @@
   "variable": [
     {
       "key": "base_url",
-      "value": "https://your-app-name.onrender.com",
+      "value": "https://your-actual-render-app.onrender.com",
       "type": "string",
-      "description": "Production URL - Update this after Render deployment"
+      "description": "Production URL - Replace with your actual Render URL"
     },
     {
       "key": "base_url_local",
@@ -1272,7 +1272,7 @@
     },
     {
       "key": "templates_endpoint",
-      "value": "/api/templates", 
+      "value": "/api/templates",
       "type": "string"
     },
     {
