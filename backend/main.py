@@ -27,10 +27,10 @@ from functools import wraps
 from pathlib import Path
 
 # Import processing modules
-from modules.document_utils import find_and_replace_text
-from modules.image_processing import insert_gallery_table, get_annexure_images_and_captions, insert_annexure_images
-from modules.form_processing import process_form_data_api, process_gallery_images_api
-from config import Config
+from backend.modules.document_utils import find_and_replace_text
+from backend.modules.image_processing import insert_gallery_table, get_annexure_images_and_captions, insert_annexure_images
+from backend.modules.form_processing import process_form_data_api, process_gallery_images_api
+from backend.config import Config
 
 # Initialize Flask app
 app = Flask(__name__)

@@ -9,7 +9,7 @@ import os
 from docx.shared import Inches, Pt, Cm
 import docx
 import docx.oxml.shared
-from .document_utils import insert_paragraph_after, insert_table_after, save_uploaded_file_to_temp
+from backend.modules.document_utils import insert_paragraph_after, insert_table_after, save_uploaded_file_to_temp
 
 
 def insert_gallery_table(doc, images, captions, images_per_row=2, image_width=Cm(8.13), placeholder='{{GALLERY_TABLE}}'):
@@ -124,7 +124,7 @@ def insert_annexure_images(doc, images, captions, placeholder, image_width=Cm(15
     Optionally inserts a page break after the last annexure image.
     Images are centered with portrait proportions: 15cm width × 20cm height.
     """
-    from .document_utils import find_and_replace_text
+    from backend.modules.document_utils import find_and_replace_text
     
     # First, try to find and identify where the placeholder is
     placeholder_found = False
