@@ -1,0 +1,1112 @@
+{
+  "info": {
+    "name": "Training Report Generator - Complete Test Scenarios",
+    "description": "Comprehensive API test scenarios with ALL placeholders and ALL image types",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Scenario 1: Complete Test - All Fields + All Images",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "// Auto-extract file_id for download",
+              "if (pm.response.code === 200) {",
+              "    var jsonData = pm.response.json();",
+              "    if (jsonData.status === 'success' && jsonData.file_id) {",
+              "        pm.environment.set('file_id', jsonData.file_id);",
+              "        pm.environment.set('filename', jsonData.filename);",
+              "        console.log('✅ SCENARIO 1 COMPLETE - All fields + all images');",
+              "        console.log('📄 File:', jsonData.filename);",
+              "        console.log('🆔 ID:', jsonData.file_id);",
+              "        console.log('📊 Size:', jsonData.file_size_mb + ' MB');",
+              "    }",
+              "}"
+            ],
+            "type": "text/javascript"
+          }
+        }
+      ],
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "formdata",
+          "formdata": [
+            {
+              "key": "training_type",
+              "value": "type_a",
+              "type": "text",
+              "description": "Training template type"
+            },
+            {
+              "key": "template_id",
+              "value": "1",
+              "type": "text",
+              "description": "Template number"
+            },
+            {
+              "key": "submitted_to",
+              "value": "Director General RRECL",
+              "type": "text",
+              "description": "{{Submitted_to}} placeholder"
+            },
+            {
+              "key": "submitted_by",
+              "value": "Training Coordinator & Program Manager",
+              "type": "text",
+              "description": "{{Submitted_by}} placeholder"
+            },
+            {
+              "key": "address_line1",
+              "value": "Renewable Energy Training Institute",
+              "type": "text",
+              "description": "Address line 1 for {{ADDRESS}} placeholder"
+            },
+            {
+              "key": "address_line2",
+              "value": "Sector 23, Knowledge City Campus",
+              "type": "text",
+              "description": "Address line 2 for {{ADDRESS}} placeholder"
+            },
+            {
+              "key": "address_line3",
+              "value": "Jaipur, Rajasthan - 302017, India",
+              "type": "text",
+              "description": "Address line 3 for {{ADDRESS}} placeholder"
+            },
+            {
+              "key": "event_date",
+              "value": "2024-01-15",
+              "type": "text",
+              "description": "{{EVENT_DATE}} placeholder"
+            },
+            {
+              "key": "start_date",
+              "value": "2024-01-15",
+              "type": "text",
+              "description": "{{START_DATE}} placeholder"
+            },
+            {
+              "key": "end_date",
+              "value": "2024-01-17",
+              "type": "text",
+              "description": "{{END_DATE}} placeholder"
+            },
+            {
+              "key": "date",
+              "value": "2024-01-15",
+              "type": "text",
+              "description": "{{DATETIME}} placeholder"
+            },
+            {
+              "key": "workshop_type",
+              "value": "ECSBC 2024 Training Programme with Comprehensive Documentation",
+              "type": "text",
+              "description": "{{WORKSHOP_TYPE}} placeholder"
+            },
+            {
+              "key": "training_type",
+              "value": "Energy Conservation and Sustainable Building Code Training",
+              "type": "text",
+              "description": "{{TRAINING_TYPE}} placeholder"
+            },
+            {
+              "key": "organizer",
+              "value": "RRECL Training Division in collaboration with State Energy Departments",
+              "type": "text",
+              "description": "{{ORGANIZER}} placeholder"
+            },
+            {
+              "key": "venue",
+              "value": "RRECL Conference Hall, Main Auditorium, Jaipur",
+              "type": "text",
+              "description": "{{VENUE}} placeholder"
+            },
+            {
+              "key": "cell_name",
+              "value": "Energy Conservation Cell",
+              "type": "text",
+              "description": "{{CELL_NAME}} placeholder"
+            },
+            {
+              "key": "duration",
+              "value": "3 days (09:00 AM – 06:00 PM daily)",
+              "type": "text",
+              "description": "{{DURATION}} placeholder"
+            },
+            {
+              "key": "participant_count",
+              "value": "75",
+              "type": "text",
+              "description": "{{PARTICIPANT_COUNT}} placeholder"
+            },
+            {
+              "key": "contact_person",
+              "value": "Dr. Rajesh Sharma, Program Coordinator",
+              "type": "text",
+              "description": "{{CONTACT_PERSON}} placeholder"
+            },
+            {
+              "key": "phone",
+              "value": "+91-141-2234567, +91-9876543210",
+              "type": "text",
+              "description": "{{PHONE}} placeholder"
+            },
+            {
+              "key": "email",
+              "value": "training@rrecl.gov.in, coordinator@rrecl.gov.in",
+              "type": "text",
+              "description": "{{EMAIL}} placeholder"
+            },
+            {
+              "key": "rrecl_people",
+              "value": "Mr. Rajesh Kumar (Senior Engineer), Dr. Priya Sharma (Technical Lead), Eng. Amit Verma (Project Manager) and Ms. Sunita Agarwal (Training Coordinator)",
+              "type": "text",
+              "description": "{{RRECL_PEOPLE}} - Testing grammar with 'and'"
+            },
+            {
+              "key": "guest_trainers",
+              "value": "Prof. John Smith (International Energy Expert), Dr. Maria Garcia (Climate Change Specialist), Er. David Johnson (HVAC Design Consultant) and Dr. Priyanka Gupta (Sustainable Architecture Expert)",
+              "type": "text",
+              "description": "{{GUEST_TRAINERS}} - Testing grammar with 'and'"
+            },
+            {
+              "key": "chief_guests",
+              "value": "Hon. Minister Rajesh Patel (Energy Minister), Dr. Agarwal (Secretary Energy Department) and Principal Secretary Urban Development",
+              "type": "text",
+              "description": "{{CHIEF_GUESTS}} - Testing grammar with 'and'"
+            },
+            {
+              "key": "guidance_person",
+              "value": "Dr. R.K. Verma (Chairperson), Chief Engineer RRECL, Technical Director Sustainable Buildings, Deputy Director Training and Project Coordinator Energy Cell",
+              "type": "text",
+              "description": "{{GUIDANCE_PERSON}} - Testing grammar with 'and'"
+            },
+            {
+              "key": "gallery_image_1",
+              "type": "file",
+              "src": [],
+              "description": "Upload image for gallery position 1"
+            },
+            {
+              "key": "gallery_caption_1",
+              "value": "Opening ceremony with welcome address by Chief Guest and dignitaries",
+              "type": "text",
+              "description": "Caption for gallery image 1"
+            },
+            {
+              "key": "gallery_image_2",
+              "type": "file",
+              "src": [],
+              "description": "Upload image for gallery position 2"
+            },
+            {
+              "key": "gallery_caption_2",
+              "value": "Technical session on building envelope optimization and energy efficiency",
+              "type": "text",
+              "description": "Caption for gallery image 2"
+            },
+            {
+              "key": "gallery_image_3",
+              "type": "file",
+              "src": [],
+              "description": "Upload image for gallery position 3"
+            },
+            {
+              "key": "gallery_caption_3",
+              "value": "HVAC system design workshop with hands-on practical demonstrations",
+              "type": "text",
+              "description": "Caption for gallery image 3"
+            },
+            {
+              "key": "gallery_image_4",
+              "type": "file",
+              "src": [],
+              "description": "Upload image for gallery position 4"
+            },
+            {
+              "key": "gallery_caption_4",
+              "value": "Sustainable site planning session covering green building principles",
+              "type": "text",
+              "description": "Caption for gallery image 4"
+            },
+            {
+              "key": "gallery_image_5",
+              "type": "file",
+              "src": [],
+              "description": "Upload image for gallery position 5"
+            },
+            {
+              "key": "gallery_caption_5",
+              "value": "Water conservation techniques demonstration and best practices sharing",
+              "type": "text",
+              "description": "Caption for gallery image 5"
+            },
+            {
+              "key": "gallery_image_6",
+              "type": "file",
+              "src": [],
+              "description": "Upload image for gallery position 6"
+            },
+            {
+              "key": "gallery_caption_6",
+              "value": "Closing ceremony with certificate distribution and group photography",
+              "type": "text",
+              "description": "Caption for gallery image 6"
+            },
+            {
+              "key": "annexure1_image_1",
+              "type": "file",
+              "src": [],
+              "description": "Annexure 1 - Document 1"
+            },
+            {
+              "key": "annexure1_caption_1",
+              "value": "ANNEXURE 1 - Training Programme Agenda: Detailed schedule with session topics, timing, and resource persons",
+              "type": "text",
+              "description": "Caption for annexure 1 image 1"
+            },
+            {
+              "key": "annexure1_image_2",
+              "type": "file",
+              "src": [],
+              "description": "Annexure 1 - Document 2"
+            },
+            {
+              "key": "annexure1_caption_2",
+              "value": "ANNEXURE 1 - Learning Objectives: Comprehensive list of training outcomes and competency framework",
+              "type": "text",
+              "description": "Caption for annexure 1 image 2"
+            },
+            {
+              "key": "annexure2_image_1",
+              "type": "file",
+              "src": [],
+              "description": "Annexure 2 - Document 1"
+            },
+            {
+              "key": "annexure2_caption_1",
+              "value": "ANNEXURE 2 - Promotional Materials: Workshop flyer, brochure, and registration forms",
+              "type": "text",
+              "description": "Caption for annexure 2 image 1"
+            },
+            {
+              "key": "annexure2_image_2",
+              "type": "file",
+              "src": [],
+              "description": "Annexure 2 - Document 2"
+            },
+            {
+              "key": "annexure2_caption_2",
+              "value": "ANNEXURE 2 - Communication Materials: Email invitations, social media posts, and announcements",
+              "type": "text",
+              "description": "Caption for annexure 2 image 2"
+            },
+            {
+              "key": "annexure3_image_1",
+              "type": "file",
+              "src": [],
+              "description": "Annexure 3 - Document 1"
+            },
+            {
+              "key": "annexure3_caption_1",
+              "value": "ANNEXURE 3 - Attendance Records: Daily attendance sheets with participant signatures and timing",
+              "type": "text",
+              "description": "Caption for annexure 3 image 1"
+            },
+            {
+              "key": "annexure3_image_2",
+              "type": "file",
+              "src": [],
+              "description": "Annexure 3 - Document 2"
+            },
+            {
+              "key": "annexure3_caption_2",
+              "value": "ANNEXURE 3 - Participation Tracking: Session-wise attendance and engagement monitoring forms",
+              "type": "text",
+              "description": "Caption for annexure 3 image 2"
+            },
+            {
+              "key": "annexure4_image_1",
+              "type": "file",
+              "src": [],
+              "description": "Annexure 4 - Document 1"
+            },
+            {
+              "key": "annexure4_caption_1",
+              "value": "ANNEXURE 4 - Feedback Forms: Participant evaluation surveys and training effectiveness assessment",
+              "type": "text",
+              "description": "Caption for annexure 4 image 1"
+            },
+            {
+              "key": "annexure4_image_2",
+              "type": "file",
+              "src": [],
+              "description": "Annexure 4 - Document 2"
+            },
+            {
+              "key": "annexure4_caption_2",
+              "value": "ANNEXURE 4 - Quality Assessment: Training quality metrics, suggestions, and improvement recommendations",
+              "type": "text",
+              "description": "Caption for annexure 4 image 2"
+            },
+            {
+              "key": "annexure5_image_1",
+              "type": "file",
+              "src": [],
+              "description": "Annexure 5 - Document 1"
+            },
+            {
+              "key": "annexure5_caption_1",
+              "value": "ANNEXURE 5 - Registration Documents: Pre-training registration forms with participant details and qualifications",
+              "type": "text",
+              "description": "Caption for annexure 5 image 1"
+            },
+            {
+              "key": "annexure5_image_2",
+              "type": "file",
+              "src": [],
+              "description": "Annexure 5 - Document 2"
+            },
+            {
+              "key": "annexure5_caption_2",
+              "value": "ANNEXURE 5 - Certificates: Training completion certificates and achievement recognition documents",
+              "type": "text",
+              "description": "Caption for annexure 5 image 2"
+            }
+          ]
+        },
+        "url": {
+          "raw": "{{base_url}}{{generate_endpoint}}",
+          "host": ["{{base_url}}"],
+          "path": ["{{generate_endpoint}}"]
+        },
+        "description": "SCENARIO 1: Complete comprehensive test with ALL placeholders filled and ALL image types (6 gallery + 10 annexure images). Tests every possible field and image combination."
+      }
+    },
+    {
+      "name": "Scenario 2: Type B Template - All Fields + All Images",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "formdata",
+          "formdata": [
+            {
+              "key": "training_type",
+              "value": "type_b",
+              "type": "text",
+              "description": "Testing Type B template"
+            },
+            {
+              "key": "template_id",
+              "value": "2",
+              "type": "text",
+              "description": "Template 2 of Type B"
+            },
+            {
+              "key": "submitted_to",
+              "value": "Director General GEDA",
+              "type": "text"
+            },
+            {
+              "key": "submitted_by",
+              "value": "Senior Training Officer",
+              "type": "text"
+            },
+            {
+              "key": "address_line1",
+              "value": "Gujarat Energy Development Agency",
+              "type": "text"
+            },
+            {
+              "key": "address_line2",
+              "value": "4th Floor, Block No. 11-12, Udyog Bhavan",
+              "type": "text"
+            },
+            {
+              "key": "address_line3",
+              "value": "Gandhinagar, Gujarat - 382010",
+              "type": "text"
+            },
+            {
+              "key": "event_date",
+              "value": "2024-02-20",
+              "type": "text"
+            },
+            {
+              "key": "workshop_type",
+              "value": "Advanced Energy Efficiency Training",
+              "type": "text"
+            },
+            {
+              "key": "organizer",
+              "value": "GEDA Training Institute",
+              "type": "text"
+            },
+            {
+              "key": "venue",
+              "value": "GEDA Conference Center, Gandhinagar",
+              "type": "text"
+            },
+            {
+              "key": "cell_name",
+              "value": "Energy Efficiency Cell",
+              "type": "text"
+            },
+            {
+              "key": "duration",
+              "value": "2 days intensive workshop",
+              "type": "text"
+            },
+            {
+              "key": "participant_count",
+              "value": "50",
+              "type": "text"
+            },
+            {
+              "key": "rrecl_people",
+              "value": "Dr. Gujarat Kumar (Director) and Ms. Energy Sharma (Technical Head)",
+              "type": "text"
+            },
+            {
+              "key": "guest_trainers",
+              "value": "Prof. International Expert, Dr. Energy Consultant and Technical Specialist Green Buildings",
+              "type": "text"
+            },
+            {
+              "key": "chief_guests",
+              "value": "Hon. Chief Minister Gujarat and Secretary Energy Department",
+              "type": "text"
+            },
+            {
+              "key": "guidance_person",
+              "value": "Director GEDA, Joint Director Technical, Assistant Director Training and Project Coordinator",
+              "type": "text"
+            },
+            {
+              "key": "gallery_image_1",
+              "type": "file",
+              "src": []
+            },
+            {
+              "key": "gallery_caption_1",
+              "value": "GEDA Training Program - Opening Session",
+              "type": "text"
+            },
+            {
+              "key": "gallery_image_2",
+              "type": "file",
+              "src": []
+            },
+            {
+              "key": "gallery_caption_2",
+              "value": "Technical Workshop Session",
+              "type": "text"
+            },
+            {
+              "key": "gallery_image_3",
+              "type": "file",
+              "src": []
+            },
+            {
+              "key": "gallery_caption_3",
+              "value": "Practical Demonstration",
+              "type": "text"
+            },
+            {
+              "key": "gallery_image_4",
+              "type": "file",
+              "src": []
+            },
+            {
+              "key": "gallery_caption_4",
+              "value": "Group Discussion Session",
+              "type": "text"
+            },
+            {
+              "key": "gallery_image_5",
+              "type": "file",
+              "src": []
+            },
+            {
+              "key": "gallery_caption_5",
+              "value": "Field Visit Documentation",
+              "type": "text"
+            },
+            {
+              "key": "gallery_image_6",
+              "type": "file",
+              "src": []
+            },
+            {
+              "key": "gallery_caption_6",
+              "value": "Certificate Distribution Ceremony",
+              "type": "text"
+            },
+            {
+              "key": "annexure1_image_1",
+              "type": "file",
+              "src": []
+            },
+            {
+              "key": "annexure1_caption_1",
+              "value": "GEDA Training Schedule and Agenda",
+              "type": "text"
+            },
+            {
+              "key": "annexure1_image_2",
+              "type": "file",
+              "src": []
+            },
+            {
+              "key": "annexure1_caption_2",
+              "value": "Resource Materials and Handouts",
+              "type": "text"
+            },
+            {
+              "key": "annexure2_image_1",
+              "type": "file",
+              "src": []
+            },
+            {
+              "key": "annexure2_caption_1",
+              "value": "GEDA Promotional Materials",
+              "type": "text"
+            },
+            {
+              "key": "annexure2_image_2",
+              "type": "file",
+              "src": []
+            },
+            {
+              "key": "annexure2_caption_2",
+              "value": "Registration and Communication",
+              "type": "text"
+            },
+            {
+              "key": "annexure3_image_1",
+              "type": "file",
+              "src": []
+            },
+            {
+              "key": "annexure3_caption_1",
+              "value": "GEDA Attendance Records",
+              "type": "text"
+            },
+            {
+              "key": "annexure4_image_1",
+              "type": "file",
+              "src": []
+            },
+            {
+              "key": "annexure4_caption_1",
+              "value": "GEDA Training Feedback",
+              "type": "text"
+            },
+            {
+              "key": "annexure5_image_1",
+              "type": "file",
+              "src": []
+            },
+            {
+              "key": "annexure5_caption_1",
+              "value": "GEDA Completion Certificates",
+              "type": "text"
+            }
+          ]
+        },
+        "url": {
+          "raw": "{{base_url}}{{generate_endpoint}}",
+          "host": ["{{base_url}}"],
+          "path": ["{{generate_endpoint}}"]
+        },
+        "description": "SCENARIO 2: Type B template with GEDA-specific content, all placeholders, and all image types."
+      }
+    },
+    {
+      "name": "Scenario 3: Type C Template - All Fields + All Images",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "formdata",
+          "formdata": [
+            {
+              "key": "training_type",
+              "value": "type_c",
+              "type": "text",
+              "description": "Testing Type C template"
+            },
+            {
+              "key": "template_id",
+              "value": "3",
+              "type": "text"
+            },
+            {
+              "key": "submitted_to",
+              "value": "Director General HAREDA",
+              "type": "text"
+            },
+            {
+              "key": "submitted_by",
+              "value": "Chief Training Coordinator",
+              "type": "text"
+            },
+            {
+              "key": "address_line1",
+              "value": "Haryana Renewable Energy Development Agency",
+              "type": "text"
+            },
+            {
+              "key": "address_line2",
+              "value": "Tau Devi Lal Complex, Sector 3",
+              "type": "text"
+            },
+            {
+              "key": "address_line3",
+              "value": "Panchkula, Haryana - 134109",
+              "type": "text"
+            },
+            {
+              "key": "event_date",
+              "value": "2024-03-25",
+              "type": "text"
+            },
+            {
+              "key": "workshop_type",
+              "value": "Renewable Energy Integration Training",
+              "type": "text"
+            },
+            {
+              "key": "organizer",
+              "value": "HAREDA Technical Division",
+              "type": "text"
+            },
+            {
+              "key": "venue",
+              "value": "HAREDA Training Center, Panchkula",
+              "type": "text"
+            },
+            {
+              "key": "cell_name",
+              "value": "Renewable Energy Cell",
+              "type": "text"
+            },
+            {
+              "key": "rrecl_people",
+              "value": "Er. Haryana Singh (Chief Engineer), Dr. Renewable Sharma (Technical Director) and Ms. Training Coordinator (Program Manager)",
+              "type": "text"
+            },
+            {
+              "key": "guest_trainers",
+              "value": "International Solar Expert, Wind Energy Consultant and Biomass Technology Specialist",
+              "type": "text"
+            },
+            {
+              "key": "chief_guests",
+              "value": "Hon. Energy Minister Haryana, Principal Secretary Power and Chairman HAREDA",
+              "type": "text"
+            },
+            {
+              "key": "gallery_image_1",
+              "type": "file",
+              "src": []
+            },
+            {
+              "key": "gallery_caption_1",
+              "value": "HAREDA Solar Training Workshop",
+              "type": "text"
+            },
+            {
+              "key": "gallery_image_2",
+              "type": "file",
+              "src": []
+            },
+            {
+              "key": "gallery_caption_2",
+              "value": "Wind Energy Technical Session",
+              "type": "text"
+            },
+            {
+              "key": "gallery_image_3",
+              "type": "file",
+              "src": []
+            },
+            {
+              "key": "gallery_caption_3",
+              "value": "Biomass Technology Demonstration",
+              "type": "text"
+            },
+            {
+              "key": "gallery_image_4",
+              "type": "file",
+              "src": []
+            },
+            {
+              "key": "gallery_caption_4",
+              "value": "Grid Integration Workshop",
+              "type": "text"
+            },
+            {
+              "key": "gallery_image_5",
+              "type": "file",
+              "src": []
+            },
+            {
+              "key": "gallery_caption_5",
+              "value": "Policy Discussion Session",
+              "type": "text"
+            },
+            {
+              "key": "gallery_image_6",
+              "type": "file",
+              "src": []
+            },
+            {
+              "key": "gallery_caption_6",
+              "value": "HAREDA Training Completion",
+              "type": "text"
+            },
+            {
+              "key": "annexure1_image_1",
+              "type": "file",
+              "src": []
+            },
+            {
+              "key": "annexure1_caption_1",
+              "value": "HAREDA Training Curriculum",
+              "type": "text"
+            },
+            {
+              "key": "annexure1_image_2",
+              "type": "file",
+              "src": []
+            },
+            {
+              "key": "annexure1_caption_2",
+              "value": "Technical Resource Materials",
+              "type": "text"
+            },
+            {
+              "key": "annexure2_image_1",
+              "type": "file",
+              "src": []
+            },
+            {
+              "key": "annexure2_caption_1",
+              "value": "HAREDA Workshop Brochure",
+              "type": "text"
+            },
+            {
+              "key": "annexure3_image_1",
+              "type": "file",
+              "src": []
+            },
+            {
+              "key": "annexure3_caption_1",
+              "value": "HAREDA Participant Records",
+              "type": "text"
+            },
+            {
+              "key": "annexure4_image_1",
+              "type": "file",
+              "src": []
+            },
+            {
+              "key": "annexure4_caption_1",
+              "value": "HAREDA Training Evaluation",
+              "type": "text"
+            },
+            {
+              "key": "annexure5_image_1",
+              "type": "file",
+              "src": []
+            },
+            {
+              "key": "annexure5_caption_1",
+              "value": "HAREDA Achievement Certificates",
+              "type": "text"
+            }
+          ]
+        },
+        "url": {
+          "raw": "{{base_url}}{{generate_endpoint}}",
+          "host": ["{{base_url}}"],
+          "path": ["{{generate_endpoint}}"]
+        },
+        "description": "SCENARIO 3: Type C template with HAREDA-specific renewable energy content and comprehensive documentation."
+      }
+    },
+    {
+      "name": "Scenario 4: Type D Template - All Fields + All Images",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "formdata",
+          "formdata": [
+            {
+              "key": "training_type",
+              "value": "type_d",
+              "type": "text",
+              "description": "Testing Type D template"
+            },
+            {
+              "key": "template_id",
+              "value": "4",
+              "type": "text"
+            },
+            {
+              "key": "submitted_to",
+              "value": "Director General UREDA",
+              "type": "text"
+            },
+            {
+              "key": "submitted_by",
+              "value": "Principal Training Officer",
+              "type": "text"
+            },
+            {
+              "key": "address_line1",
+              "value": "Uttarakhand Renewable Energy Development Agency",
+              "type": "text"
+            },
+            {
+              "key": "address_line2",
+              "value": "Maharani Bagh, Near IT Park",
+              "type": "text"
+            },
+            {
+              "key": "address_line3",
+              "value": "Dehradun, Uttarakhand - 248006",
+              "type": "text"
+            },
+            {
+              "key": "event_date",
+              "value": "2024-04-30",
+              "type": "text"
+            },
+            {
+              "key": "workshop_type",
+              "value": "Mountain Region Energy Efficiency Training",
+              "type": "text"
+            },
+            {
+              "key": "organizer",
+              "value": "UREDA Training Institute",
+              "type": "text"
+            },
+            {
+              "key": "venue",
+              "value": "UREDA Conference Hall, Dehradun",
+              "type": "text"
+            },
+            {
+              "key": "cell_name",
+              "value": "Mountain Energy Cell",
+              "type": "text"
+            },
+            {
+              "key": "rrecl_people",
+              "value": "Dr. Mountain Kumar (Director), Er. Himalayan Singh (Chief Engineer), Ms. Valley Sharma (Training Head) and Project Coordinator Energy Division",
+              "type": "text"
+            },
+            {
+              "key": "guest_trainers",
+              "value": "Alpine Energy Expert, Mountain Construction Specialist and High Altitude Building Consultant",
+              "type": "text"
+            },
+            {
+              "key": "chief_guests",
+              "value": "Hon. Chief Minister Uttarakhand and Secretary Forest & Environment",
+              "type": "text"
+            },
+            {
+              "key": "gallery_image_1",
+              "type": "file",
+              "src": []
+            },
+            {
+              "key": "gallery_caption_1",
+              "value": "UREDA Mountain Training Inauguration",
+              "type": "text"
+            },
+            {
+              "key": "gallery_image_2",
+              "type": "file",
+              "src": []
+            },
+            {
+              "key": "gallery_caption_2",
+              "value": "High Altitude Construction Techniques",
+              "type": "text"
+            },
+            {
+              "key": "gallery_image_3",
+              "type": "file",
+              "src": []
+            },
+            {
+              "key": "gallery_caption_3",
+              "value": "Mountain Climate Energy Solutions",
+              "type": "text"
+            },
+            {
+              "key": "gallery_image_4",
+              "type": "file",
+              "src": []
+            },
+            {
+              "key": "gallery_caption_4",
+              "value": "Sustainable Mountain Development",
+              "type": "text"
+            },
+            {
+              "key": "gallery_image_5",
+              "type": "file",
+              "src": []
+            },
+            {
+              "key": "gallery_caption_5",
+              "value": "Himalayan Energy Conservation",
+              "type": "text"
+            },
+            {
+              "key": "gallery_image_6",
+              "type": "file",
+              "src": []
+            },
+            {
+              "key": "gallery_caption_6",
+              "value": "UREDA Training Achievement Ceremony",
+              "type": "text"
+            },
+            {
+              "key": "annexure1_image_1",
+              "type": "file",
+              "src": []
+            },
+            {
+              "key": "annexure1_caption_1",
+              "value": "UREDA Mountain Training Program Details",
+              "type": "text"
+            },
+            {
+              "key": "annexure1_image_2",
+              "type": "file",
+              "src": []
+            },
+            {
+              "key": "annexure1_caption_2",
+              "value": "High Altitude Building Guidelines",
+              "type": "text"
+            },
+            {
+              "key": "annexure2_image_1",
+              "type": "file",
+              "src": []
+            },
+            {
+              "key": "annexure2_caption_1",
+              "value": "UREDA Workshop Invitation Materials",
+              "type": "text"
+            },
+            {
+              "key": "annexure3_image_1",
+              "type": "file",
+              "src": []
+            },
+            {
+              "key": "annexure3_caption_1",
+              "value": "UREDA Training Attendance Documentation",
+              "type": "text"
+            },
+            {
+              "key": "annexure4_image_1",
+              "type": "file",
+              "src": []
+            },
+            {
+              "key": "annexure4_caption_1",
+              "value": "UREDA Program Feedback and Assessment",
+              "type": "text"
+            },
+            {
+              "key": "annexure5_image_1",
+              "type": "file",
+              "src": []
+            },
+            {
+              "key": "annexure5_caption_1",
+              "value": "UREDA Training Completion Documentation",
+              "type": "text"
+            }
+          ]
+        },
+        "url": {
+          "raw": "{{base_url}}{{generate_endpoint}}",
+          "host": ["{{base_url}}"],
+          "path": ["{{generate_endpoint}}"]
+        },
+        "description": "SCENARIO 4: Type D template with UREDA mountain region-specific content, specialized for high-altitude energy solutions."
+      }
+    },
+    {
+      "name": "Download Any Generated File",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{base_url}}{{download_endpoint}}/{{file_id}}",
+          "host": ["{{base_url}}"],
+          "path": ["{{download_endpoint}}", "{{file_id}}"]
+        },
+        "description": "Download file using file_id from any scenario above. Use 'Save Response' > 'Save to file' in Postman."
+      }
+    },
+    {
+      "name": "List All Generated Files",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{base_url}}{{files_endpoint}}",
+          "host": ["{{base_url}}"],
+          "path": ["{{files_endpoint}}"]
+        },
+        "description": "View all generated files from all scenarios with download links and metadata."
+      }
+    }
+  ],
+  "variable": [
+    {
+      "key": "base_url",
+      "value": "http://localhost:5000",
+      "type": "string"
+    },
+    {
+      "key": "generate_endpoint",
+      "value": "/api/generate",
+      "type": "string"
+    },
+    {
+      "key": "download_endpoint",
+      "value": "/api/download",
+      "type": "string"
+    },
+    {
+      "key": "files_endpoint",
+      "value": "/api/files",
+      "type": "string"
+    },
+    {
+      "key": "file_id",
+      "value": "",
+      "type": "string"
+    }
+  ]
+}
