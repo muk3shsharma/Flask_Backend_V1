@@ -1240,9 +1240,9 @@
   "variable": [
     {
       "key": "base_url",
-      "value": "https://your-actual-render-app.onrender.com",
+      "value": "https://flask-backend-v1.onrender.com",
       "type": "string",
-      "description": "Production URL - Replace with your actual Render URL"
+      "description": "Production URL - Render deployment"
     },
     {
       "key": "base_url_local",
